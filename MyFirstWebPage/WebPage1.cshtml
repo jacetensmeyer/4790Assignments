@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = "~/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
 <html>
     <head>
         <title></title>
@@ -18,5 +21,37 @@
             var weekDay = DateTime.Now.DayOfWeek;
             var greetingMessage = greeting + "Today is: " + weekDay;
          }
+
+        @{ 
+            var outsideTemp = 79;
+            var weathMessage = "Hello, it is " + outsideTemp + " degrees.";
+            <p>Today's Weather: @weathMessage</p>
+        }
+        <p>Welcome to all new members. @greetingMessage</p>
+
+        <!--Embedding Escape Characters-->
+        @{ 
+            var myFilePath = @"C:\MyFolder\";
+            <p>The file path is @myFilePath</p>
+
+            var myQuote = @"""To be or not to be""";
+            <p>My Quote = @myQuote</p>
+        }
+
+
+        <table border="1">
+            <tr>
+                <td>Request URL</td>
+                <td>Relative Path</td>
+                <td>Full Path</td>
+                <td>HTTP Request Type</th>
+            </tr>
+            <tr>
+                <td>@Request.Url</td>
+                <td>@Request.FilePath</td>
+                <td>@Request.MapPath(Request.FilePath)</td>
+                <td>@Request.RequestType</td>
+            </tr>
+        </table>
     </body>
 </html>
